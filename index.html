@@ -25,18 +25,18 @@
   </head>
   <body>
     <main>
-      <label for="glycemia-prev">Glicemia precedente:</label>
+      <label for="glycemia-prev">Glicemia precedente (mg/dl):</label>
       <input type="number" id="glycemia-prev" />
       <br /><br />
-      <label for="glycemia-curr">Glicemia attuale:</label>
+      <label for="glycemia-curr">Glicemia attuale (mg/dl):</label>
       <input type="number" id="glycemia-curr" />
       <br /><br />
-      <label for="rate-prev">Velocità precedente:</label>
+      <label for="rate-prev">Velocità precedente (mg/h):</label>
       <input type="number" id="rate-prev" />
       <br /><br />
       <button id="calculate">Calcola</button>
       <br /><br />
-      <p>Velocità attuale: <span id="rate-curr"></span></p>
+      <p>Velocità attuale (mg/h): <span id="rate-curr"></span></p>
     </main>
     <!-- <script src="script.js"></script> -->
     <script>
@@ -118,7 +118,8 @@
           default:
             i--
             const j = findInterval(glycemiaPrev, glycemiaPrevEdges[i])
-            result = coefficients[i][j].toFixed(1)
+            result = coefficients[i][j] * ratePrev
+            result = result.toFixed(1)
         }
 
         rateCurrResult.innerText = result

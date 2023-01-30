@@ -76,7 +76,8 @@ const calculateRate = () => {
     default:
       i--
       const j = findInterval(glycemiaPrev, glycemiaPrevEdges[i])
-      result = coefficients[i][j].toFixed(1)
+      result = coefficients[i][j] * ratePrev
+      result = result.toFixed(1)
   }
 
   rateCurrResult.innerText = result
