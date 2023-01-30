@@ -63,16 +63,14 @@ const calculateRate = () => {
     return
   }
 
-  let result
+  let result = ''
   let i = findInterval(glycemiaCurr, glycemiaCurrEdges)
 
   switch (i) {
     case 0:
-      result = ''
       alert('Stop infusione, avvisa medico')
       break
     case glycemiaCurrEdges.length:
-      result = ''
       alert('Avvisa medico')
       break
     default:
