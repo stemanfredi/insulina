@@ -52,7 +52,11 @@ input {
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  display: none;
+  -webkit-appearance: none;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
 }
 
 button {
