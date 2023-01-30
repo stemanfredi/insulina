@@ -31,20 +31,20 @@ const coefficients = [
   [1.5, 1.2, 1.0, 0.7, 0.5, 0.4, 0.3, 0.2],
   [1.5, 1.4, 1.3, 1.2, 1.0, 0.8, 0.5, 0.3, 0.2],
   [1.8, 1.6, 1.4, 1.2, 1.0, 0.8, 0.5, 0.4, 0.2],
-  [2, 1.8, 1.6, 1.4, 1.2, 1.0, 0.8, 0.5, 0.4],
+  [2.0, 1.8, 1.6, 1.4, 1.2, 1.0, 0.8, 0.5, 0.4],
   [2.2, 1.8, 1.6, 1.4, 1.2, 1.0, 0.5, 0.4],
-  [2.4, 2, 1.8, 1.6, 1.4, 1.2, 1.0, 0.5],
-  [2.6, 2, 1.8, 1.6, 1.4, 1.2, 1],
-  [2.8, 2.2, 2, 1.8, 1.6, 1.4, 1.2],
-  [3, 2.2, 2, 1.8, 1.6, 1.4],
-  [3.2, 2.4, 2.2, 2, 1.8, 1.6],
+  [2.4, 2.0, 1.8, 1.6, 1.4, 1.2, 1.0, 0.5],
+  [2.6, 2.0, 1.8, 1.6, 1.4, 1.2, 1],
+  [2.8, 2.2, 2.0, 1.8, 1.6, 1.4, 1.2],
+  [3.0, 2.2, 2.0, 1.8, 1.6, 1.4],
+  [3.2, 2.4, 2.2, 2.0, 1.8, 1.6],
 ]
 
 const glycemiaPrevInput = document.querySelector('#glycemia-prev')
 const glycemiaCurrInput = document.querySelector('#glycemia-curr')
 const ratePrevInput = document.querySelector('#rate-prev')
-const calculateBtn = document.querySelector('#calculate')
 const rateCurrResult = document.querySelector('#rate-curr')
+const calculateBtn = document.querySelector('#calculate')
 
 const findInterval = (num, edges) => {
   for (let i = 0; i < edges.length; i++) {
@@ -55,11 +55,11 @@ const findInterval = (num, edges) => {
 
 const calculateRate = () => {
   const glycemiaPrev = parseInt(glycemiaPrevInput.value)
-  const ratePrev = parseInt(ratePrevInput.value)
+  const ratePrev = parseFloat(ratePrevInput.value)
   const glycemiaCurr = parseInt(glycemiaCurrInput.value)
 
   if (!glycemiaPrev || !glycemiaCurr || !ratePrev) {
-    alert('Inserire tutti i valori')
+    alert('Alimentare tutti i campi!')
     return
   }
 
@@ -68,10 +68,12 @@ const calculateRate = () => {
 
   switch (i) {
     case 0:
-      result = 'Stop infusione, avvisa medico'
+      result = ''
+      alert('Stop infusione, avvisa medico')
       break
     case glycemiaCurrEdges.length:
-      result = 'Avvisa medico'
+      result = ''
+      alert('Avvisa medico')
       break
     default:
       i--
