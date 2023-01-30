@@ -1,8 +1,8 @@
-'use strict'
+"use strict";
 
 const glycemiaCurrEdges = [
   85, 101, 121, 141, 161, 176, 201, 226, 251, 276, 301, 326, 351, 376, 401, 451,
-]
+];
 
 const glycemiaPrevEdges = [
   [120, 151, 201],
@@ -20,7 +20,7 @@ const glycemiaPrevEdges = [
   [100, 201, 276, 326, 351, 376],
   [100, 251, 326, 351, 376],
   [100, 201, 276, 351, 376],
-]
+];
 
 const coefficients = [
   [0.6, 0.5, 0.3, 0.1],
@@ -38,49 +38,52 @@ const coefficients = [
   [2.8, 2.2, 2, 1.8, 1.6, 1.4, 1.2],
   [3, 2.2, 2, 1.8, 1.6, 1.4],
   [3.2, 2.4, 2.2, 2, 1.8, 1.6],
-]
+];
 
-const glycemiaPrevInput = document.querySelector('#glycemia-prev')
-const glycemiaCurrInput = document.querySelector('#glycemia-curr')
-const ratePrevInput = document.querySelector('#rate-prev')
-const calculateBtn = document.querySelector('#calculate')
-const rateCurrResult = document.querySelector('#rate-curr')
+const glycemiaPrevInput = document.querySelector("#glycemia-prev");
+const glycemiaCurrInput = document.querySelector("#glycemia-curr");
+const ratePrevInput = document.querySelector("#rate-prev");
+const calculateBtn = document.querySelector("#calculate");
+const rateCurrResult = document.querySelector("#rate-curr");
 
 const findInterval = (num, edges) => {
   for (let i = 0; i < edges.length; i++) {
-    if (num < edges[i]) return i
+    if (num < edges[i]) return i;
   }
-  return edges.length
-}
+  return edges.length;
+};
 
 const calculateRate = () => {
-  const glycemiaPrev = parseInt(glycemiaPrevInput.value)
-  const ratePrev = parseInt(ratePrevInput.value)
-  const glycemiaCurr = parseInt(glycemiaCurrInput.value)
+  const glycemiaPrev = parseInt(glycemiaPrevInput.value);
+  const ratePrev = parseInt(ratePrevInput.value);
+  const glycemiaCurr = parseInt(glycemiaCurrInput.value);
 
   if (!glycemiaPrev || !glycemiaCurr || !ratePrev) {
-    alert('Inserire tutti i valori')
-    return
+    alert("Inserire tutti i valori");
+    return;
   }
 
-  let result
-  let i = findInterval(glycemiaCurr, glycemiaCurrEdges)
+  let result;
+  let i = findInterval(glycemiaCurr, glycemiaCurrEdges);
 
   switch (i) {
     case 0:
-      result = 'Stop infusione, avvisa medico'
-      break
+      result = "Stop infusione, avvisa medico";
+      break;
     case glycemiaCurrEdges.length:
-      result = 'Avvisa medico'
-      break
+      result = "Avvisa medico";
+      break;
     default:
-      i--
-      const j = findInterval(glycemiaPrev, glycemiaPrevEdges[i])
-      result = coefficients[i][j] * ratePrev
-      result = result.toFixed(1)
+      i--;
+      const j = findInterval(glycemiaPrev, glycemiaPrevEdges[i]);
+      result = coefficients[i][j] * ratePrev;
+      result = result.toFixed(1);
   }
 
-  rateCurrResult.innerText = result
-}
+  rateCurrResult.innerText = result;
+};
 
-calculateBtn.onclick = calculateRate
+calculateBtn.addEventListener("click", function (e) {
+  e.preventDefault();
+  calculateRate();
+});
