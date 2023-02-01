@@ -2,68 +2,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
-  font-size: 14px;
-  font-weight: bold;
+  font-family: "Itim", cursive;
 }
 
-main {
-  display: grid;
-  grid-template-areas: '1 1 1';
-  grid-auto-columns: max-content;
-  padding: 1em;
-  gap: 0.2em;
-}
-
-main > * {
-  display: grid;
-  padding: 0.6em 0.6em;
-  justify-content: center; /* horizontally */
-  align-content: center; /* vertically */
-}
-
-main > *:last-child {
-  grid-column: 1 / -1;
-}
-
-label,
-button {
-  color: white;
-}
-
-label {
-  background-color: rgb(219, 68, 55);
-}
-
-div {
-  background-color: rgb(244, 180, 0);
-}
-
-input,
-button {
-  border: none;
-}
-
-input {
-  width: 8em;
-  text-align: center;
-  background-color: rgb(239, 239, 239);
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-}
-
-input[type='number'] {
-  -moz-appearance: textfield;
-}
-
-button {
-  background-color: rgba(66, 133, 244, 1);
-}
-
-button:hover {
-  background-color: rgba(66, 133, 244, 0.8);
-  cursor: pointer;
-}

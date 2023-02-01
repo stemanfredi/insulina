@@ -83,4 +83,7 @@ const calculateRate = () => {
   rateCurrResult.innerText = result
 }
 
-calculateBtn.onclick = calculateRate
+calculateBtn.addEventListener("click", function (e) {
+  e.preventDefault();
+  calculateRate();
+});
