@@ -39,7 +39,21 @@
 
       h1 {
         font-size: 160%;
-        margin: 1rem 0;
+        margin: 1.4rem 0;
+      }
+
+      div {
+        display: grid;
+        gap: 0.4em;
+        max-width: 30em;
+        margin-bottom: 1.4rem;
+        text-align: justify;
+        text-justify: inter-word;
+      }
+
+      u {
+        text-decoration-color: var(--red);
+        text-decoration-thickness: 2px;
       }
 
       form {
@@ -98,6 +112,18 @@
   <body>
     <main class="border rounded">
       <h1 class="red">Calcola la velocità di infusione</h1>
+      <div>
+        <p>
+          <u>Preparazione in 1° VIA</u>: in pompa insulina rapida
+          100 UI/100 ml di soluzione fisiologica (diluizione 1 ml = 1 UI di
+          insulina).
+        </p>
+        <p>
+          <u>Quando DTX < 250 mg/dl, avviare 2° VIA</u>: 500 mL di
+          soluzione glucosata 5% + KCl 20 mEq/L in pompa a 30 o 60 cc/h in base
+          a compenso glicometabolico e stato di idratazione.
+        </p>
+      </div>
       <form>
         <p>Glicemia precedente (mg/dl):</p>
         <input type="number" id="glycemia-prev" class="border rounded" />
